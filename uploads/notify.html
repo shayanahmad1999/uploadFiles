@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notification Example</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+<style>
+  .notification-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 300px; /* Adjust as needed */
+}
+
+.notification {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.notification-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.notification-message {
+    font-size: 14px;
+    color: #333;
+}
+
+</style>
+</head>
+<body>
+
+<div id="notification-container" class="notification-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+  function showNotification(message) {
+    const container = document.getElementById('notification-container');
+
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+
+    const icon = document.createElement('div');
+    icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path fill="#4caf50" d="M3,16.2l3.614,1.71L13,23.7V40H6c-1.657,0-3-1.343-3-3V16.2z"></path>
+      <polygon fill="#e53935" points="12,17 13,23.7 24,31.95 35,23.7 36,17"></polygon>
+      <path fill="#c62828" d="M3,12.298V16.2l10,7.5V11.2L9.876,8.859C9.132,8.301,8.228,8,7.298,8h0C4.924,8,3,9.924,3,12.298z"></path>
+      <path fill="#fbc02d" d="M45,12.298V16.2l-10,7.5V11.2l3.124-2.341C38.868,8.301,39.772,8,40.702,8h0 C43.076,8,45,9.924,45,12.298z"></path>
+    </svg>`;
+    icon.className = 'notification-icon';
+    notification.appendChild(icon);
+
+    const messageDiv = document.createElement('div');
+    messageDiv.textContent = message;
+    messageDiv.className = 'notification-message';
+    notification.appendChild(messageDiv);
+
+    container.appendChild(notification);
+
+    // Automatically remove the notification after a delay
+    setTimeout(() => {
+        container.removeChild(notification);
+    }, 5000); // Adjust duration (in milliseconds) as needed
+}
+
+// Example usage:
+setTimeout(() => {
+    showNotification('New email from John Doe');
+}, 0); // Show the first notification immediately
+setTimeout(() => {
+    showNotification('New email from Jane Smith');
+}, 6000); // Show the second notification after 6 seconds
+setTimeout(() => {
+    showNotification('New email from Bob Johnson');
+}, 12000); // Show the third notification after 12 seconds
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix Typing Animation with Typed.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <style>
+    .animation-container {
+      font-size: 36px;
+      font-family: 'Arial', sans-serif;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #000; /* Cursor effect */
+    }
+  </style>
+</head>
+<body>
+
+<div class="animation-container" id="netflix-container"></div>
+
+<script>
+  const options = {
+    strings: ["Netflix"],
+    typeSpeed: 100,
+    backSpeed: 50,
+    startDelay: 500,
+    backDelay: 500,
+    loop: false,
+  };
+
+  const typed = new Typed('#netflix-container', options);
+</script>
+
+</body>
+</html>
